@@ -3,9 +3,12 @@ package ibf2022.batch2.paf.server.models;
 import java.util.LinkedList;
 import java.util.List;
 
+import org.springframework.data.mongodb.core.mapping.Field;
+
 // Do not change this file
 public class Restaurant {
 
+	@Field("restaurant_id")
 	private String restaurantId;
 	private String name;
 	private String address;

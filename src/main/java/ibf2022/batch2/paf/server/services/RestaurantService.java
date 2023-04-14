@@ -1,5 +1,6 @@
 package ibf2022.batch2.paf.server.services;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -21,6 +22,7 @@ public class RestaurantService {
 	// TODO: Task 2
 	// Do not change the method's signature
 	public List<String> getCuisines() {
+
 		return restaurantRepo.getCuisines();
 	}
 
@@ -31,17 +33,32 @@ public class RestaurantService {
 	// TODO: Task 3 
 	// Do not change the method's signature
 	public List<Restaurant> getRestaurantsByCuisine(String cuisine) {
-		return null;
+
+		cuisine.replace("_", "/");
+		
+		List<Restaurant> restaurantsByCuisine = restaurantRepo.getRestaurantsByCuisine(cuisine);
+
+		return restaurantsByCuisine;
 	}
+
+
+
 
 	// TODO: Task 4 
 	// Do not change the method's signature
 	public Optional<Restaurant> getRestaurantById(String id) {
-		return null;
+
+		return restaurantRepo.getRestaurantById(id);
 	}
+
+
+
 
 	// TODO: Task 5 
 	// Do not change the method's signature
 	public void postRestaurantComment(Comment comment) {
+
+		restaurantRepo.insertRestaurantComment(comment);
+
 	}
 }
