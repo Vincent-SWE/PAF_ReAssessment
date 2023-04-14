@@ -1,1 +1,5 @@
 TODO: Task 1 - Write the mongo import command here
+
+
+mongoimport --db restaurantDb --collection restaurants --file restaurants.json --jsonArray
+
