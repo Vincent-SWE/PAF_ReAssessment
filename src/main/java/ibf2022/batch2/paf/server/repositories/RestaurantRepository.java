@@ -91,7 +91,7 @@ public class RestaurantRepository {
 	// Write the MongoDB query for this method in the comments below
 	//
 	// native mongo query
-	// 
+	// db.restaurants.find({name: "Afghan Kebab House"}, {_id: 0, restaurant_id: 1, name: 1, cuisine: 1, address: 1, comments: 1})
 	public Optional<Restaurant> getRestaurantById(String id) {
 
 		MatchOperation match = Aggregation.match(Criteria.where("restaurant_id").is(id));
@@ -177,6 +177,10 @@ public class RestaurantRepository {
 	// Do not change the method's signature
 	// Write the MongoDB query for this method in the comments below
 	//
+	//native mongo query
+	// db.restaurants.update( { id: 40552806 }, { $push: { comment: { comment_object } } } )
+	// db.restaurants.insertOne({ "restaurantId": "restaurantId", "name": "name", "rating": "rating", "comment": "comment" });
+
 	public void insertRestaurantComment(Comment comment) {
 
 		Document commentDoc = new Document()
