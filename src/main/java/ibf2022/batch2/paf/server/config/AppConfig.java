@@ -11,6 +11,36 @@ import com.mongodb.client.MongoClients;
 @Configuration
 public class AppConfig {
     
+    @Value("${MONGO_URL}")
+    private String connectionString;
+
+    @Value("${DATABASE}")
+    private String dataBase;
+
+    private MongoClient client = null;
+
+
+    @Bean
+    public MongoClient mongoClient() {
+        System.out.println(connectionString);
+        if (null == client)
+            client = MongoClients.create(connectionString);
+        try {
+            client.listDatabaseNames();
+
+            System.out.println("Was able to connect to MongoDB");
+        } 
+        catch (Exception e) {
+            System.err.println("Could not connect to MongoDB" + e.getMessage());
+
+        }
+
+        return client;
+
+
+    }
+
+
     @Value("${mongo.url}")
     private String mongoUrl;
 
